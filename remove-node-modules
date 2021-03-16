@@ -1,0 +1,16 @@
+# These commands reveal how much space is being used by `node_modules` folders and
+# how to remove them if you'd prefer to regain hard drive space for infrequently 
+# used projects. It could also be run periodically for projects that haven't been 
+# updated for a certain amount of time.
+# Source: https://medium.com/@MarkPieszak/how-to-delete-all-node-modules-folders-on-your-machine-and-free-up-hd-space-f3954843aeda
+
+# View how much space these folders are taking up. 'workspace' is the directory
+# where I keep my projects.
+
+    $ cd workspace
+    $ find . -name "node_modules" -type d -prune | xargs du -chs
+    
+# Actively delete all `node_modules` directories found from the current directory.
+
+    $ cd workspace
+    $ find . -name "node_modules" -type d -prune -exec rm -rf '{}' +
